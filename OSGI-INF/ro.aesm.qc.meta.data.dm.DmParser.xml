@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="ro.aesm.qc.meta.data.dm.DmParser">
+   <service>
+      <provide interface="ro.aesm.qc.api.meta.component.IMetaComponentParser"/>
+   </service>
+   <implementation class="ro.aesm.qc.meta.data.dm.DmParser"/>
+</scr:component>

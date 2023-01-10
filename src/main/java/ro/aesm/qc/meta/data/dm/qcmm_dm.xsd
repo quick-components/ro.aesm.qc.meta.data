@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://qc.aesm.ro/meta/data_map"
+	xmlns="https://qc.aesm.ro/meta/data_map"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+	<!-- ====================== DATASET ======================== -->
+
+	<xs:simpleType name="DsItemType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="field"></xs:enumeration>
+			<xs:enumeration value="helper"></xs:enumeration>
+			<xs:enumeration value="param"></xs:enumeration>
+			<xs:enumeration value="ref"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DsItemDataType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="string"></xs:enumeration>
+			<xs:enumeration value="text"></xs:enumeration>
+			<xs:enumeration value="integer"></xs:enumeration>
+			<xs:enumeration value="decimal"></xs:enumeration>
+			<xs:enumeration value="number"></xs:enumeration>
+			<xs:enumeration value="boolean"></xs:enumeration>
+			<xs:enumeration value="date"></xs:enumeration>
+			<xs:enumeration value="datetime"></xs:enumeration>
+			<xs:enumeration value="timestamp"></xs:enumeration>
+			<xs:enumeration value="clob"></xs:enumeration>
+			<xs:enumeration value="blob"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="DsItem">
+		<xs:sequence>
+			<xs:element name="source" type="xs:string" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="target" type="xs:string" minOccurs="0"
+				maxOccurs="1"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="type" type="DsItemType" />
+		<xs:attribute name="data_type" type="DsItemDataType" />
+		<xs:attribute name="path" type="xs:string" />
+		<xs:attribute name="ref" type="xs:string" />
+		<xs:attribute name="value" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="DsItems">
+		<xs:sequence>
+			<xs:element name="item" type="DsItem" minOccurs="1"
+				maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="DsDbType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="table"></xs:enumeration>
+			<xs:enumeration value="view"></xs:enumeration>
+			<xs:enumeration value="sql"></xs:enumeration>
+			<xs:enumeration value="factory"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="DsDb">
+		<xs:sequence>
+			<xs:element name="sql" type="xs:string" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="factory" type="xs:string" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="where" type="xs:string" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="order_by" type="xs:string" minOccurs="0"
+				maxOccurs="1"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="type" type="DsDbType" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="alias" type="xs:string" />
+		<xs:attribute name="db" type="xs:string" />
+	</xs:complexType>
+
+	<xs:simpleType name="DsListType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="master"></xs:enumeration>
+			<xs:enumeration value="detail"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="DsList">
+		<xs:sequence>
+			<xs:element name="source" type="DsDb" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="target" type="DsDb" minOccurs="0"
+				maxOccurs="1"></xs:element>
+			<xs:element name="items" type="DsItems" minOccurs="1"
+				maxOccurs="1"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="type" type="DsListType" />
+		<xs:attribute name="path" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="DsCustomizer">
+		<xs:attribute name="for" type="xs:string" />
+		<xs:attribute name="class" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="DsDataset">
+		<xs:sequence>
+			<xs:element name="customizer" type="DsCustomizer"
+				minOccurs="0" maxOccurs="unbounded"></xs:element>
+			<xs:element name="list" type="DsList" minOccurs="0"
+				maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="path" type="xs:string" />
+	</xs:complexType>
+
+
+</xs:schema>
