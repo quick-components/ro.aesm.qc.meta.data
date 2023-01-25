@@ -21,7 +21,6 @@ public class DefaultDsReaderCustomizer {
 	}
 
 	public void onNewRecord(String listName, Map<String, Object> rec, Map<String, Object> parentRec) {
-
 	}
 
 	public void initNewRecordItem(MDm_Item item, String listName, List<Map<String, Object>> list,

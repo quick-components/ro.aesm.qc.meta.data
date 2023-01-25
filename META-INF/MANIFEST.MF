@@ -3,7 +3,15 @@ Bundle-ManifestVersion: 2
 Bundle-Name: QC data meta model
 Bundle-SymbolicName: ro.aesm.qc.meta.data
 Bundle-Version: 0.0.1.qualifier
-Export-Package: ro.aesm.qc.meta.data.dm
+Export-Package: ro.aesm.qc.meta.data.dataset,
+ ro.aesm.qc.meta.data.dataset.model,
+ ro.aesm.qc.meta.data.dataset.processor.reader,
+ ro.aesm.qc.meta.data.datapack,
+ ro.aesm.qc.meta.data.datapack.processor.reader,
+ ro.aesm.qc.meta.data.dm,
+ ro.aesm.qc.meta.data.dm.model,
+ ro.aesm.qc.meta.data.dm.processor.reader,
+ ro.aesm.qc.meta.data.dm.processor.writer
 Import-Package: 
  org.osgi.service.component.annotations;version="1.5.0";resolution:=optional,
  com.opencsv,org.apache.commons.lang3,
@@ -14,7 +22,9 @@ Import-Package:
  ro.aesm.qc.base,
  ro.aesm.qc.base.db,
  ro.aesm.qc.base.util
-Service-Component: OSGI-INF/ro.aesm.qc.meta.data.dm.DmParser.xml
+Service-Component: OSGI-INF/ro.aesm.qc.meta.data.datapack.DpParser.xml,
+ OSGI-INF/ro.aesm.qc.meta.data.dataset.DsParser.xml,
+ OSGI-INF/ro.aesm.qc.meta.data.dm.DmParser.xml
 Automatic-Module-Name: ro.aesm.qc.meta.data
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy

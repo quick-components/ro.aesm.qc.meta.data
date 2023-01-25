@@ -12,7 +12,7 @@ import ro.aesm.qc.api.base.IExecutionContext;
 import ro.aesm.qc.meta.data.dm.DmModel;
 import ro.aesm.qc.meta.data.dm.model.MDm_Customizer;
 
-public class DsXmlReader extends AbstractDsReader {
+public class DmXmlReader extends AbstractDsReader {
 
 	public Map<String, List<Map<String, Object>>> read(DmModel metaModel, InputStream inputStream,
 			IExecutionContext executionContext) throws Exception {

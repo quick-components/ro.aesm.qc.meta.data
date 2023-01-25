@@ -39,7 +39,7 @@ public class DmParser extends AbstractMetaParser {
 	}
 
 	@Override
-	public IMetaComponentModel parse(Node node) {
+	public IMetaComponentModel parse(Node node, boolean nested) {
 		String name = this.getAttr(node, "name").trim();
 		DmModel mm = new DmModel(name);
 
@@ -117,7 +117,7 @@ public class DmParser extends AbstractMetaParser {
 		mm.setName(this.getAttr(node, "name"));
 		mm.setAlias(this.getAttr(node, "alias", MDm_Db.DEFAULT_ALIAS).strip());
 
-		//mm.setTable(this.getValue(node, this.qualifiedTag("table"), "").strip());
+		// mm.setTable(this.getValue(node, this.qualifiedTag("table"), "").strip());
 		mm.setWhere(this.getValue(node, this.qualifiedTag("where"), "").strip());
 		mm.setOrderBy(this.getValue(node, this.qualifiedTag("order_by"), "").strip());
 		mm.setSql(this.getValue(node, this.qualifiedTag("sql"), "").strip());

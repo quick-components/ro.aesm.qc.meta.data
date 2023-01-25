@@ -15,7 +15,7 @@ import ro.aesm.qc.base.db.Db;
 import ro.aesm.qc.meta.data.dm.model.MDm_List;
 import ro.aesm.qc.meta.data.dm.processor.reader.AbstractDsReader;
 import ro.aesm.qc.meta.data.dm.processor.reader.DsCsvReader;
-import ro.aesm.qc.meta.data.dm.processor.reader.DsXmlReader;
+import ro.aesm.qc.meta.data.dm.processor.reader.DmXmlReader;
 import ro.aesm.qc.meta.data.dm.processor.sql.DsInsertBuilder;
 
 public class DmProcessor extends AbstractMetaProcessor {
@@ -29,7 +29,7 @@ public class DmProcessor extends AbstractMetaProcessor {
 //			dsReader = new DsJsonReader();
 //		} else
 		if (format.equals(Constants.XML)) {
-			dsReader = new DsXmlReader();
+			dsReader = new DmXmlReader();
 		} else if (format.equals(Constants.CSV)) {
 			dsReader = new DsCsvReader();
 		} else {
